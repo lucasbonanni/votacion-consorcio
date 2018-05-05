@@ -52,7 +52,7 @@ export class HomePage implements OnInit {
   }
 
   mensage() {
-    console.log('prueba botón');
+    // console.log('prueba botón');
     this.slidesRef.lockSwipes(false);
     this.slidesRef.slideNext();
     this.slidesRef.lockSwipes(true);

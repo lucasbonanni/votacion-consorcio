@@ -1,68 +1,62 @@
 <!-- <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content> -->
-
-
-<ion-header>
-  <ion-navbar>
     <ion-title>Aplicación de consorcio</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content class="tutorial-page">
 
   <ion-slides pager="false" effect="cube" #slides (ionSlideDidChange)="slideChanged()">
     <ion-slide>
-      <ion-toolbar>
-      </ion-toolbar>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
       <h2 class="slide-title">Bienvenido!!</h2>
       <p>Esta es la aplicación de votación del consorcio</p>
-      <button ion-button large clear icon-end color="primary" (click)="mensage()">
-        Continuar
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="assets/imgs/consorcio.jpg" height="250px" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <h3>Continuar </h3> -->
+      <button ion-button large clear icon-end small color="primary">
+        continuar
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
     </ion-slide>
     <ion-slide>
-      <ion-toolbar>
-      </ion-toolbar>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
-      <h2 class="slide-title">Ready to Play?</h2>
-      <button ion-button large clear icon-end color="primary" (click)="mensage()">
-        votar
-        <ion-icon name="arrow-forward"></ion-icon>
-      </button>
-    </ion-slide>
-    <ion-slide>
-      <ion-toolbar>
-      </ion-toolbar>
-      <img src="assets/img/ica-slidebox-img-4.png" class="slide-image"/>
-      <h2 class="slide-title">Resultados de la votación</h2>
-      <!-- <button ion-button large clear icon-end color="primary" (click)="mensage()">
-        Continue
-        <ion-icon name="arrow-forward"></ion-icon> -->
-        <ion-grid>
+      <h4>Elija una opción</h4>
+      <ion-card>
+        <img src="assets/imgs/flores-plantas.jpg" />
+        <ion-card-content>
           <ion-row>
-            <ion-col>
-              <h1>10</h1>
-            </ion-col>
-            <ion-col>
-              <h1>32</h1>
-            </ion-col>
+            <button ion-button block small outline (click)="mensage()" color="danger">Votar plantas</button>
           </ion-row>
-        </ion-grid>
-      <!-- </button> -->
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <img src="assets/imgs/matafuegos.jpg" />
+        <ion-card-content>
+          <ion-row>
+            <button ion-button block small outline (click)="mensage()" color="secondary">Votar matafuegos</button>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" /> -->
+      <h2 class="slide-title">Resultados de la votación</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1>10</h1>
+          </ion-col>
+          <ion-col>
+            <h1>32</h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-slide>
   </ion-slides>
 </ion-content>
