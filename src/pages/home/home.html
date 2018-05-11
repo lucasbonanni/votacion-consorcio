@@ -3,7 +3,13 @@
     <ion-title>Aplicación de consorcio</ion-title>
   </ion-navbar>
 </ion-header> -->
-
+<ion-header>
+  <ion-buttons end>
+    <button ion-button icon-end clear (click)="logout()">
+      Cerrar Session <ion-icon name="md-exit"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-header>
 <ion-content class="tutorial-page">
 
   <ion-slides pager="false" effect="cube" #slides (ionSlideDidChange)="slideChanged()">
@@ -18,7 +24,7 @@
         </ion-row>
       </ion-grid>
       <!-- <h3>Continuar </h3> -->
-      <button ion-button large clear icon-end small color="primary">
+      <button ion-button large clear icon-end color="primary">
         continuar
         <ion-icon name="arrow-forward"></ion-icon>
       </button>

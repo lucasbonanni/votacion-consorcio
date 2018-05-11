@@ -1,5 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +13,7 @@ export class HomePage implements OnInit {
   @ViewChild('slides') slidesRef: Slides;
   voto: boolean = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private auth: AuthServiceProvider) {
 
   }
 
@@ -56,6 +58,12 @@ export class HomePage implements OnInit {
     this.slidesRef.lockSwipes(false);
     this.slidesRef.slideNext();
     this.slidesRef.lockSwipes(true);
+  }
+
+  public logout() {
+    this.auth.signOut().then(() => {
+      this.navCtrl.setRoot(LoginPage)
+    });
   }
 
 }
