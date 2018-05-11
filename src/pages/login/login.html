@@ -1,0 +1,76 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content>
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" (ngSubmit)="login()" #loginForm="ngForm">
+          <span class="login100-form-title">
+            Inciar session
+          </span>
+
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+            <input class="input100" type="email" name="email" placeholder="Correo electronico" [(ngModel)]="registerCredentials.email" email required>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 validate-input" data-validate="Please enter password">
+            <input class="input100" type="password" name="password" placeholder="Contraseña" [(ngModel)]="registerCredentials.password" required>
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="text-right p-t-13 p-b-23">
+            <!-- <span class="txt1">
+              Forgot
+            </span>
+
+            <a href="#" class="txt2">
+              Username / Password?
+            </a> -->
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" type="submit" [disabled]="!loginForm.form.valid">
+              Sign in
+            </button>
+          </div>
+
+          <div class="flex-col-c p-t-170 p-b-40">
+            <!-- <span class="txt1 p-b-9">
+              Don’t have an account?
+            </span>
+
+            <a href="#" class="txt3">
+              Sign up now
+            </a> -->
+          </div>
+        </form>
+        <div class="text-right p-t-13 p-b-23">
+          <!-- <span class="txt1">
+            Forgot
+          </span>
+          
+          <a href="#" class="txt2">
+            Username / Password?
+          </a> -->
+          <button class="login100-form-btn">
+            Más opciones
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
