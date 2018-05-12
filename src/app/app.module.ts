@@ -12,6 +12,8 @@ import { firebaseConfig } from '../enviroments/enviroment';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { VoteProvider } from '../providers/vote/vote';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthServiceProvider
+    AngularFireDatabase,
+    AuthServiceProvider,
+    VoteProvider
   ]
 })
 export class AppModule {}

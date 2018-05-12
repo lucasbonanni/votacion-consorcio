@@ -35,7 +35,7 @@
         <img src="assets/imgs/flores-plantas.jpg" />
         <ion-card-content>
           <ion-row>
-            <button ion-button block small outline (click)="mensage()" color="danger">Votar plantas</button>
+            <button ion-button block small outline (click)="votePlantas()" color="danger">Votar plantas</button>
           </ion-row>
         </ion-card-content>
       </ion-card>
@@ -43,7 +43,7 @@
         <img src="assets/imgs/matafuegos.jpg" />
         <ion-card-content>
           <ion-row>
-            <button ion-button block small outline (click)="mensage()" color="secondary">Votar matafuegos</button>
+            <button ion-button block small outline (click)="voteMatafuetos()" color="secondary">Votar matafuegos</button>
           </ion-row>
         </ion-card-content>
       </ion-card>
@@ -56,10 +56,15 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h1>10</h1>
+            <h1>{{result.plantas}}</h1>
           </ion-col>
           <ion-col>
-            <h1>32</h1>
+            <h1>{{result.matafuegos}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col >
+            <p>{{ user.displayName }} gracias por votar!!</p>
           </ion-col>
         </ion-row>
       </ion-grid>

@@ -2,6 +2,8 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoginPage } from '../login/login';
+import { VoteProvider } from '../../providers/vote/vote';
+import { User } from 'firebase/app';
 
 @Component({
   selector: 'page-home',
@@ -9,55 +11,68 @@ import { LoginPage } from '../login/login';
 })
 export class HomePage implements OnInit {
 
-
+  user: User;
   @ViewChild('slides') slidesRef: Slides;
   voto: boolean = false;
+  result: any;
 
-  constructor(public navCtrl: NavController, private auth: AuthServiceProvider) {
-
+  constructor(public navCtrl: NavController, private auth: AuthServiceProvider, private vote: VoteProvider) {
+    this.result = {};
   }
 
   ngOnInit(): void {
-    // throw new Error("Method not implemented.");
-    // this.slidesRef.lockSwipes(this.voto);
+    this.user = this.auth.getUserInfo();
+    this.vote.votes.subscribe(
+      next => { 
+        console.log(next);
+        if(next.filter( value => value.displayName === this.user.displayName).length > 0){
+          this.slidesRef.slideTo(2);
+          this.voto = true;
+          this.slidesRef.lockSwipes(true);
+        };
+      },
+      error => console.log(error),
+      () => {
+
+      });
     this.slidesRef.enableKeyboardControl(true);
+    this.result = this.vote.getResults();
   }
 
-  //   slides = [
-  //     {
-  //       title: "Bienvenido!!",
-  //       description: "Bievenido a la aplicación de votación de consorcio.",
-  //       image: "assets/img/ica-slidebox-img-1.png",
-  //     },
-  //     {
-  //       title: "What is Ionic?",
-  //       description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-  //       image: "assets/img/ica-slidebox-img-2.png",
-  //     },
-  //     {
-  //       title: "What is Ionic Cloud?",
-  //       description: "The <b>Ionic Cloud</b> is a cloud platform for managing and scaling Ionic apps with integrated services like push notifications, native builds, user auth, and live updating.",
-  //       image: "assets/img/ica-slidebox-img-3.png",
-  //     }
-  // ];.
 
   slideChanged() {
     let currentIndex = this.slidesRef.getActiveIndex();
     console.log('current slide', currentIndex);
-    if(currentIndex === 1 && !this.voto){
+    if (currentIndex === 1 && !this.voto) {
       this.slidesRef.lockSwipes(true);
       this.slidesRef.lockSwipeToNext
     }
-    if(!this.voto && currentIndex === 2){
+    if (!this.voto && currentIndex === 2) {
       this.slidesRef.slidePrev();
+    }
+    if(this.vote && currentIndex ===3)
+    {
+      this.result = this.vote.getResults();
+      console.log(this.result);
     }
   }
 
+
+  public votePlantas() {
+    this.vote.votePlantas(this.user.displayName);
+    this.mensage();
+  }
+
+  public voteMatafuetos() {
+    this.vote.voteMatefuegos(this.user.displayName);
+    this.mensage();
+  }
   mensage() {
     // console.log('prueba botón');
     this.slidesRef.lockSwipes(false);
     this.slidesRef.slideNext();
     this.slidesRef.lockSwipes(true);
+    
   }
 
   public logout() {
