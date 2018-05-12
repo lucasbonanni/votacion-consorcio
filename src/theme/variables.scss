@@ -34,14 +34,21 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #82FFE6,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
+$text-color: #FF9042;
+$item-md-paragraph-text-color:#FF9042;
+$item-wp-paragraph-text-color:#FF9042;
 
+$font-family-base:Ubuntu-Regular, sans-serif;
+$font-family-md-base:Ubuntu-Regular, sans-serif;
+$font-family-wp-base:Ubuntu-Regular, sans-serif;
+$background-color:#51B7B3;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
