@@ -40,7 +40,6 @@ export class LoginPage {
     //   this.registerCredentials.photoURL = 'https://loremflickr.com/320/240/picture,face?random=6'
     // }
     this.auth.signInWithEmail(this.registerCredentials).then(allowed => {
-      console.log(allowed);
       this.navCtrl.setRoot(HomePage);
     }).catch(error => {
       alert(error);
