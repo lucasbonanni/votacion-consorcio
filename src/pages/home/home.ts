@@ -4,6 +4,7 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { LoginPage } from '../login/login';
 import { VoteProvider } from '../../providers/vote/vote';
 import { User } from 'firebase/app';
+import { voteResultModel } from '../../models/voteModel';
 
 @Component({
   selector: 'page-home',
@@ -15,17 +16,18 @@ export class HomePage implements OnInit {
   @ViewChild('slides') slidesRef: Slides;
   voto: boolean = false;
   result: any;
+  voteResult: voteResultModel[];
 
   constructor(public navCtrl: NavController, private auth: AuthServiceProvider, private vote: VoteProvider) {
-    this.result = {};
+    this.voteResult = [];
   }
 
   ngOnInit(): void {
     this.user = this.auth.getUserInfo();
     this.vote.votes.subscribe(
-      next => { 
+      next => {
         console.log(next);
-        if(next.filter( value => value.displayName === this.user.displayName).length > 0){
+        if (next.filter(value => value.displayName === this.user.displayName).length > 0) {
           this.slidesRef.slideTo(2);
           this.voto = true;
           this.slidesRef.lockSwipes(true);
@@ -36,7 +38,7 @@ export class HomePage implements OnInit {
 
       });
     this.slidesRef.enableKeyboardControl(true);
-    this.result = this.vote.getResults();
+    this.voteResult = this.vote.getResults();
   }
 
 
@@ -50,10 +52,9 @@ export class HomePage implements OnInit {
     if (!this.voto && currentIndex === 2) {
       this.slidesRef.slidePrev();
     }
-    if(this.vote && currentIndex ===3)
-    {
-      this.result = this.vote.getResults();
-      console.log(this.result);
+    if (this.vote && currentIndex === 3) {
+      // this.voteResult = this.vote.getResults();
+      console.log(this.voteResult);
     }
   }
 
@@ -72,7 +73,7 @@ export class HomePage implements OnInit {
     this.slidesRef.lockSwipes(false);
     this.slidesRef.slideNext();
     this.slidesRef.lockSwipes(true);
-    
+
   }
 
   public logout() {
@@ -80,5 +81,7 @@ export class HomePage implements OnInit {
       this.navCtrl.setRoot(LoginPage)
     });
   }
+
+
 
 }

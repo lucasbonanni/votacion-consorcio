@@ -37,13 +37,18 @@ export class VoteProvider {
     this.votesRef.push(vote);
   }
 
-  public getResults(): voteResultModel {
-    let vote: voteResultModel = new voteResultModel();
+  public getResults(): voteResultModel[] {
+    let vote: voteResultModel[] = [];
     this.votes.subscribe(
       next => {
-        vote.total = next.length
-        vote.plantas = next.filter(values => values.vote === 'plantas').length;
-        vote.matafuegos = next.filter(values => values.vote === 'matafuegos').length;
+        const plantas = new voteResultModel();
+        const matafuegos = new voteResultModel();
+        plantas.area = next.filter(values => values.vote === 'plantas').length;
+        plantas.vote = 'plantas';
+        matafuegos.area = next.filter(values => values.vote === 'matafuegos').length;
+        matafuegos.vote = 'matafuegos';
+        vote.push(plantas);
+        vote.push(matafuegos);
       },
       error => console.error(error),
       () => { });

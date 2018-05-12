@@ -1,9 +1,8 @@
 
 
 export class voteResultModel {
-    total: number;
-    matafuegos: number;
-    plantas: number;
+    vote: string;
+    area: number;
 }
 
 export class voteModel{

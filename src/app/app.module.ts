@@ -14,6 +14,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VoteProvider } from '../providers/vote/vote';
+import { DxPieChartModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { VoteProvider } from '../providers/vote/vote';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
+    DxPieChartModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

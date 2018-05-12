@@ -1,12 +1,8 @@
-<!-- <ion-header>
-  <ion-navbar>
-    <ion-title>Aplicación de consorcio</ion-title>
-  </ion-navbar>
-</ion-header> -->
 <ion-header>
   <ion-buttons end>
     <button ion-button icon-end clear (click)="logout()">
-      Cerrar Session <ion-icon name="md-exit"></ion-icon>
+      Cerrar Session
+      <ion-icon name="md-exit"></ion-icon>
     </button>
   </ion-buttons>
 </ion-header>
@@ -51,20 +47,21 @@
     <ion-slide>
       <ion-toolbar>
       </ion-toolbar>
-      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" /> -->
       <h2 class="slide-title">Resultados de la votación</h2>
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h1>{{result.plantas}}</h1>
-          </ion-col>
-          <ion-col>
-            <h1>{{result.matafuegos}}</h1>
+            <dx-pie-chart id="pie" title="" palette="bright" [dataSource]="voteResult">
+              <dxi-series argumentField="vote" valueField="area">
+              </dxi-series>
+              <dxo-legend verticalAlignment="bottom" horizontalAlignment="center" itemTextPosition="right">
+              </dxo-legend>
+            </dx-pie-chart>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col >
-            <p>{{ user.displayName }} gracias por votar!!</p>
+          <ion-col>
+            <h3>{{ user.displayName }} gracias por votar!!</h3>
           </ion-col>
         </ion-row>
       </ion-grid>
