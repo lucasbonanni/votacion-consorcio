@@ -3,10 +3,10 @@ export const environment = {
 };
 
 export const firebaseConfig = {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    apiKey: 'AIzaSyDJQ_f5GpvY1sjNyzkfiL74VtN9ZJ2oWzk',
+    authDomain: 'chatlab-51976.firebaseapp.com',
+    databaseURL: 'https://chatlab-51976.firebaseio.com',
+    projectId: 'chatlab-51976',
+    storageBucket: 'chatlab-51976.appspot.com',
+    messagingSenderId: '229094678157'
 };

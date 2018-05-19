@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { VoteProvider } from '../providers/vote/vote';
 import { DxPieChartModule } from 'devextreme-angular';
+import { BusyLoaderProvider } from '../providers/busy-loader/busy-loader';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DxPieChartModule } from 'devextreme-angular';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AngularFireDatabase,
     AuthServiceProvider,
-    VoteProvider
+    VoteProvider,
+    BusyLoaderProvider
   ]
 })
 export class AppModule {}
