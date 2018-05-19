@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Loading, AlertController, LoadingController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,  ActionSheetController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { HomePage } from '../home/home';
 import { usuarios } from '../../app/users';
+import { BusyLoaderProvider } from '../../providers/busy-loader/busy-loader';
 
 /**
  * Generated class for the LoginPage page.
@@ -17,10 +18,13 @@ import { usuarios } from '../../app/users';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  loading: Loading;
+
   registerCredentials = { email: '', password: '', photoURL: '', displayName: '' };
-  constructor(public navCtrl: NavController, public navParams: NavParams,     private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController,private auth: AuthServiceProvider,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,     
+    private busyLoader: BusyLoaderProvider,
+    private auth: AuthServiceProvider,
+    private toastCtrl: ToastController,
     private actionSheetCtrl: ActionSheetController) {
   }
 
@@ -34,43 +38,26 @@ export class LoginPage {
   }
 
   public login() {
-    this.showLoading()
+    this.busyLoader.showBusyLoader();
     // if(this.registerCredentials.email === 'test@test.com'){
     //   this.registerCredentials.displayName = 'Lucas Bonanni';
     //   this.registerCredentials.photoURL = 'https://loremflickr.com/320/240/picture,face?random=6'
     // }
     this.auth.signInWithEmail(this.registerCredentials).then(allowed => {
+      this.busyLoader.dismissBusyLoader();
       this.navCtrl.setRoot(HomePage);
     }).catch(error => {
-      alert(error);
-      this.loading.dismiss();
+      this.showMessage('Verifique sus credenciales');
+      this.busyLoader.dismissBusyLoader();
     });
   }
 
-  showLoading() {
-    this.loading = this.loadingCtrl.create({
-      content: 'Por favor espere...',
-      dismissOnPageChange: true
-    });
-    this.loading.present();
-  }
-
-  showError(text) {
-    this.loading.dismiss();
-
-    let alert = this.alertCtrl.create({
-      title: 'Se produjo un error',
-      subTitle: text,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 
   loginWithGithub() {
     this.auth.signInWithGithub().then(() => {
       this.navCtrl.setRoot(HomePage);
     }).catch(error => {
-      alert(error);
+      this.showMessage(error);
     });;
   }
 
@@ -78,7 +65,7 @@ export class LoginPage {
     this.auth.signInWithGoogle().then(() => {
       this.navCtrl.setRoot(HomePage);
     }).catch(error => {
-      alert(error);
+      this.showMessage(error);
     });
   }
 
@@ -140,4 +127,13 @@ export class LoginPage {
     actionSheet.present();
   }
 
+
+  showMessage(text:string) {
+    const toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'middle'
+    });
+    toast.present();
+  }
 }

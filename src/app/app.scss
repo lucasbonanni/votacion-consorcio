@@ -30,41 +30,80 @@
   src: url('../assets/fonts/JosefinSans/JosefinSans-Bold.ttf');
 }
 
+#custom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  width: 100%;
+  background-color: #FF7519;
+}
+
+.flb {
+  background-color: #FF7519;
+  height: 100%;
+  width: 100%;
+  animation: pulse 1s linear forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-logo {
+  height: 50%;
+  width: 50%;
+  max-height: 50%;
+  max-width: 50%;
+  z-index: 10000;
+}
+
+.loading-md .loading-wrapper {
+  border-radius: 0px;
+  max-width: 280px;
+  max-height: 90%;
+  /* color: rgba(0, 0, 0, 0.5); */
+  background: rgba(0, 0, 0, 0);
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0);
+  padding: 0;
+}
+
 .action-sheet-md {
-  
   .action-sheet-group:last-child {
     border-radius: 30px;
-    overflow:hidden;
+    overflow: hidden;
     box-shadow: 0 8px 6px -6px black;
-    position:relative;
+    position: relative;
     background-color: rgba(130, 241, 255, 0.80);
-    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
   }
-
-  .action-sheet-group:before, .action-sheet-group:after{
-    content:"";
-    position:absolute;
-    z-index:-1;
-    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
-    top:0;
-    bottom:0;
-    left:10px;
-    right:10px;
-    -moz-border-radius:100px / 10px;
-    border-radius:100px / 10px;
+  .action-sheet-group:before,
+  .action-sheet-group:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
   }
-  .action-sheet-group:after{
-    right:10px;
-    left:auto;
-    -webkit-transform:skew(8deg) rotate(3deg);
-       -moz-transform:skew(8deg) rotate(3deg);
-        -ms-transform:skew(8deg) rotate(3deg);
-         -o-transform:skew(8deg) rotate(3deg);
-            transform:skew(8deg) rotate(3deg);
+  .action-sheet-group:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
   }
 }
 
