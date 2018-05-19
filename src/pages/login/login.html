@@ -19,15 +19,15 @@
       <div class="wrap-login100">
         <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" (ngSubmit)="login()" #loginForm="ngForm">
           <span class="login100-form-title">
-            Inciar session
+            Inciar sesión
           </span>
 
-          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-            <input class="input100" type="email" name="email" placeholder="Correo electronico" [(ngModel)]="registerCredentials.email" email required>
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Por favor ingrese el usuario">
+            <input class="input100" type="email" name="email" placeholder="Correo electrónico" [(ngModel)]="registerCredentials.email" email required>
             <span class="focus-input100"></span>
           </div>
 
-          <div class="wrap-input100 validate-input" data-validate="Please enter password">
+          <div class="wrap-input100 validate-input" data-validate="Ingrese el password">
             <input class="input100" type="password" name="password" placeholder="Contraseña" [(ngModel)]="registerCredentials.password" required>
             <span class="focus-input100"></span>
           </div>
@@ -44,7 +44,7 @@
 
           <div class="container-login100-form-btn">
             <button class="login100-form-btn" type="submit" [disabled]="!loginForm.form.valid">
-              Sign in
+              Registrarse
             </button>
           </div>
 
