@@ -26,6 +26,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      setTimeout(() => {
+        this.splash = false
+        this.busyLoader.dismissBusyLoader();
+      }, 3000);
       this.auth.afAuth.authState
         .subscribe(
           user => {
@@ -39,10 +43,7 @@ export class MyApp {
             this.rootPage = LoginPage;
           }
         );
-        setTimeout(() => {
-          this.splash = false
-          this.busyLoader.dismissBusyLoader();
-        }, 3000);
+
     });
   }
 }
