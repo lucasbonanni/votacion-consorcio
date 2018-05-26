@@ -5,6 +5,7 @@ import { LoginPage } from '../login/login';
 import { VoteProvider } from '../../providers/vote/vote';
 import { User } from 'firebase/app';
 import { voteResultModel } from '../../models/voteModel';
+import { DxPieChartComponent } from 'devextreme-angular';
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,7 @@ export class HomePage implements OnInit {
 
   user: User;
   @ViewChild('slides') slidesRef: Slides;
+  @ViewChild(DxPieChartComponent) pieChart: DxPieChartComponent;
   voto: boolean = false;
   result: any;
   voteResult: voteResultModel[];
@@ -62,11 +64,13 @@ export class HomePage implements OnInit {
   public votePlantas() {
     this.vote.votePlantas(this.user.displayName);
     this.mensage();
+    this.pieChart.dataSource = this.vote.getResults();
   }
 
   public voteMatafuetos() {
     this.vote.voteMatefuegos(this.user.displayName);
     this.mensage();
+    this.pieChart.dataSource = this.vote.getResults();
   }
   mensage() {
     // console.log('prueba botón');

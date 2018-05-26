@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthProvider } from '@firebase/auth-types';
 import * as firebase from 'firebase/app';
 import { User } from 'firebase/app';
 import { ToastController } from 'ionic-angular';
@@ -72,7 +71,7 @@ export class AuthServiceProvider {
     return this.oauthSignIn(new firebase.auth.GithubAuthProvider());
   }
 
-  private oauthSignIn(provider: AuthProvider) {
+  private oauthSignIn(provider: any) {
     if (!(<any>window).cordova) {
       return this.afAuth.auth.signInWithPopup(provider);
     } else {
