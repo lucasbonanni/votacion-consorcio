@@ -36,21 +36,32 @@ export class VoteProvider {
     this.votesRef.push(vote);
   }
 
-  public getResults(): voteResultModel[] {
-    let vote: voteResultModel[] = [];
-    this.votes.subscribe(
-      next => {
-        const plantas = new voteResultModel();
-        const matafuegos = new voteResultModel();
-        plantas.area = next.filter(values => values.vote === 'plantas').length;
+  public getResults() {
+    // let vote: voteResultModel[] = [];
+    return this.votes.map(
+      project => {
+        let plantas = new voteResultModel();
+        let matafuegos = new voteResultModel();
+        plantas.area = project.filter(values => values.vote === 'plantas').length;
         plantas.vote = 'plantas';
-        matafuegos.area = next.filter(values => values.vote === 'matafuegos').length;
+        matafuegos.area = project.filter(values => values.vote === 'matafuegos').length;
         matafuegos.vote = 'matafuegos';
-        vote.push(plantas);
-        vote.push(matafuegos);
-      },
-      error => console.error(error),
-      () => { });
-    return vote;
+        let results: voteResultModel[] = [];
+        results = [
+          plantas,
+          matafuegos
+        ]
+        console.log(results);
+        return results;
+      }
+    )
+    // .subscribe(
+    //   next => {
+    //     vote = next; 
+    //   },
+    //   error => console.error(error),
+    //   () => { });
+      // console.log(vote);
+    // return vote;
   }
 }

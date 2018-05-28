@@ -40,7 +40,9 @@ export class HomePage implements OnInit {
 
       });
     this.slidesRef.enableKeyboardControl(true);
-    this.voteResult = this.vote.getResults();
+    this.vote.getResults().subscribe(next => {
+      this.voteResult = next;
+    });
   }
 
 
@@ -64,13 +66,13 @@ export class HomePage implements OnInit {
   public votePlantas() {
     this.vote.votePlantas(this.user.displayName);
     this.mensage();
-    this.pieChart.dataSource = this.vote.getResults();
+    // this.pieChart.dataSource = this.vote.getResults();
   }
 
   public voteMatafuetos() {
     this.vote.voteMatefuegos(this.user.displayName);
     this.mensage();
-    this.pieChart.dataSource = this.vote.getResults();
+    // this.pieChart.dataSource = this.vote.getResults();
   }
   mensage() {
     // console.log('prueba botón');
