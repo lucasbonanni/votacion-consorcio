@@ -1,11 +1,11 @@
 page-home {
-  .header > .disable-hover .button .button-md .button-clear .button-clear-md {
+  .header>.disable-hover .button .button-md .button-clear .button-clear-md {
     height: 2.0rem;
   }
   .toolbar-background {
     background: #fff;
     border-color: transparent;
-  } 
+  }
   .slide-zoom {
     height: 100%;
   }
@@ -23,11 +23,15 @@ page-home {
   p {
     padding: 0 40px;
     font-size: 14px;
-    line-height: 1.5;
-    // color: #60646B;
+    line-height: 1.5; // color: #60646B;
     // b {
     //   color: #000000;
     // }
     font-weight: bold;
+  }
+  .scroll-content {
+    background-color: antiquewhite;
+    background-image: url('../assets/imgs/background.jpg');
+    background-size: 100%;
   }
 }

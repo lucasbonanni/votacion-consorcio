@@ -34,16 +34,16 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #82FFE6,
+  primary:    #FFF,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
 );
 
-$text-color: #FF9042;
-$item-md-paragraph-text-color:#FF9042;
-$item-wp-paragraph-text-color:#FF9042;
+$text-color: #3571cf;
+$item-md-paragraph-text-color:#3571cf;
+$item-wp-paragraph-text-color:#3571cf;
 
 $font-family-base:Ubuntu-Regular, sans-serif;
 $font-family-md-base:Ubuntu-Regular, sans-serif;

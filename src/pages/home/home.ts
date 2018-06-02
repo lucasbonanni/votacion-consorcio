@@ -26,6 +26,27 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.user = this.auth.getUserInfo();
+    // this.vote.votes.subscribe(
+    //   next => {
+    //     console.log(next);
+    //     if (next.filter(value => value.displayName === this.user.displayName).length > 0) {
+    //       this.slidesRef.slideTo(2);
+    //       this.voto = true;
+    //       this.slidesRef.lockSwipes(true);
+    //     };
+    //   },
+    //   error => console.log(error),
+    //   () => {
+
+    //   });
+    // this.slidesRef.enableKeyboardControl(true);
+    // this.vote.getResults().subscribe(next => {
+    //   this.voteResult = next;
+    // });
+  }
+
+  ionViewDidEnter(){
+    this.user = this.auth.getUserInfo();
     this.vote.votes.subscribe(
       next => {
         console.log(next);
